@@ -12,7 +12,8 @@ public class Persona {
     private String nombre, domicilio, email, genero, fecNacimiento;
     private int id,clave,celular;
     
-    public Persona(){
+    public Persona(int clave){
+        this.clave = clave;
     }
 
     public Persona(String nombre, String domicilio, String email, String genero, String fecNacimiento, int id, int clave, int celular) {

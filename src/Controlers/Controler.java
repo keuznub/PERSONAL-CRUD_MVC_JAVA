@@ -61,11 +61,23 @@ public class Controler{
     }
     
     private void searchFromView(){
-        if(camposReady()){
+        if(!view.tfSearchClave.getText().isEmpty()){
+            persona = new Persona(Integer.parseInt(view.tfSearchClave.getText()));
             persona = model.search(persona);
+        }else{
+            System.out.println("Faltan Clave");
+        }
+        persona = null;
+    }
+    
+    private void deleteFromView(){
+        if(!view.tfSearchClave.getText().isEmpty()){
+            persona = new Persona(Integer.parseInt(view.tfSearchClave.getText()));
+            model.delete(persona);
         }else{
             System.out.println("Faltan campos");
         }
+        persona = null;
     }
     
    
