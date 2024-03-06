@@ -20,6 +20,7 @@ import javax.swing.JTextField;
  */
 public class ViewCRUD extends javax.swing.JFrame {
     
+    public JComponent[] arrayFieldsNeeded;
     public JComponent[] arrayFields;
     
 
@@ -28,7 +29,8 @@ public class ViewCRUD extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
-        arrayFields = new JComponent[]{tfIdShow,tfClaveShow,tfNombreShow,tfDomicilioShow,tfCelularShow,tfcorreoEShow,tfFechaNacimiento,jcSelector};
+        arrayFieldsNeeded = new JComponent[]{tfClaveShow,tfNombreShow,tfDomicilioShow,tfCelularShow,tfcorreoEShow,tfFechaNacimiento,jcSelector};
+        arrayFields = new JComponent[]{tfIdShow,tfClaveShow,tfNombreShow,tfDomicilioShow,tfCelularShow,tfcorreoEShow,tfFechaNacimiento,jcSelector,tfSearchClave};
         ChangeFonts.changeFont(jPanel1, 14);
         
         
@@ -66,32 +68,25 @@ public class ViewCRUD extends javax.swing.JFrame {
         jcSelector = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 550));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setMinimumSize(new java.awt.Dimension(330, 40));
         jPanel2.setPreferredSize(new java.awt.Dimension(330, 40));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(tfSearchClave, gridBagConstraints);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tfSearchClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfSearchClaveActionPerformed(evt);
+            }
+        });
+        jPanel2.add(tfSearchClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 90, -1));
+        tfSearchClave.getAccessibleContext().setAccessibleName("claveBuscar");
 
         btnSearch.setText("Buscar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(btnSearch, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(tfIdShow, gridBagConstraints);
+        jPanel2.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 100, -1));
+        jPanel2.add(tfIdShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 60, 100, -1));
+        tfIdShow.getAccessibleContext().setAccessibleName("id");
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -169,6 +164,7 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(tfNombreShow, gridBagConstraints);
+        tfNombreShow.getAccessibleContext().setAccessibleName("nombre");
 
         lblClave.setText("Clave :");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -187,6 +183,8 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(tfClaveShow, gridBagConstraints);
+        tfClaveShow.getAccessibleContext().setAccessibleName("clave");
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -195,6 +193,7 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(tfDomicilioShow, gridBagConstraints);
+        tfDomicilioShow.getAccessibleContext().setAccessibleName("domicilio");
 
         lblDomicilio.setText("Domicilio :");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -223,6 +222,7 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(tfCelularShow, gridBagConstraints);
+        tfCelularShow.getAccessibleContext().setAccessibleName("celular");
 
         lblCorreoE.setText("Correo electrónico :");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -241,6 +241,7 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(tfcorreoEShow, gridBagConstraints);
+        tfcorreoEShow.getAccessibleContext().setAccessibleName("email");
 
         lblFechaNacimiento.setText("Fecha Nacimiento :");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -259,6 +260,7 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(tfFechaNacimiento, gridBagConstraints);
+        tfFechaNacimiento.getAccessibleContext().setAccessibleName("fechaNacimiento");
 
         lblGenero.setText("Genero :");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -279,6 +281,7 @@ public class ViewCRUD extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(jcSelector, gridBagConstraints);
+        jcSelector.getAccessibleContext().setAccessibleName("genero");
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -290,6 +293,10 @@ public class ViewCRUD extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfSearchClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSearchClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfSearchClaveActionPerformed
 
     
 

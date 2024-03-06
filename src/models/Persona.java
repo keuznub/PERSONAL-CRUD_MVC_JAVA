@@ -4,6 +4,9 @@
  */
 package models;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Breixo
@@ -15,7 +18,18 @@ public class Persona {
     public Persona(int clave){
         this.clave = clave;
     }
-
+    
+    public Persona(String nombre, String domicilio, String email, String genero, String fecNacimiento, int clave, int celular) {
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.email = email;
+        this.genero = genero;
+        this.fecNacimiento = fecNacimiento;
+        this.clave = clave;
+        this.celular = celular;
+        
+    }
+    
     public Persona(String nombre, String domicilio, String email, String genero, String fecNacimiento, int id, int clave, int celular) {
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -65,6 +79,9 @@ public class Persona {
     }
 
     public void setFecNacimiento(String fecNacimiento) {
+        String regularExpresion = "\\d{2}[-]\\d{2}[-]\\d{4}";
+        Pattern fechaPatron = Pattern.compile(regularExpresion); 
+        Matcher matcher = fechaPatron.matcher(fecNacimiento);
         this.fecNacimiento = fecNacimiento;
     }
 
@@ -91,5 +108,11 @@ public class Persona {
     public void setCelular(int celular) {
         this.celular = celular;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "nombre=" + nombre + ", domicilio=" + domicilio + ", email=" + email + ", genero=" + genero + ", fecNacimiento=" + fecNacimiento + ", id=" + id + ", clave=" + clave + ", celular=" + celular + '}';
+    }
+    
 
 }

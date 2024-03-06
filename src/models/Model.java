@@ -27,24 +27,27 @@ public class Model implements PersonaCRUDable{
     private final String url = "jdbc:mysql://localhost:3306/crudjava"; 
     private final String driver = "com.mysql.cj.jdbc.Driver";
          
-    private void getConnection(Connection con){
+    private Connection getConnection(Connection con){
         try {
             Class.forName(driver);
             con =  DriverManager.getConnection(url, username, password);
             System.out.println("Conexion Exitosa");
+            
         } catch (Exception e) {
             System.out.println("Conexion Fallida");
             con = null;
         }  
+        return con;
     }
 
     @Override
     public void insert(Persona persona) {
         Connection con = null;
-        getConnection(con);
+        con = getConnection(con);
         if(con!=null){
             try {
                 int result;
+                System.out.println(persona);
                 PreparedStatement ps = con.prepareStatement("insert into personas(clave,nombre,domicilio,celular,correoElectronico,fechaNacimiento,genero) values(?,?,?,?,?,?,?)");
                 ps.setInt(1, persona.getClave());
                 ps.setString(2, persona.getNombre());
@@ -55,6 +58,7 @@ public class Model implements PersonaCRUDable{
                 ps.setString(7, persona.getGenero());
                 result = ps.executeUpdate();
                 
+                
                 if(result>0)
                 System.out.println("Insert Exitoso");
                 else
@@ -62,9 +66,12 @@ public class Model implements PersonaCRUDable{
                 con.close();
                 
             } catch (Exception e) {
-                System.out.println("Insert Fallido"); 
+                System.out.println("Insert Fallido excepcion");
+                e.printStackTrace();
             }
        
+        }else{
+            System.out.println("conexion es null");
         }
         
     }
@@ -72,7 +79,7 @@ public class Model implements PersonaCRUDable{
     @Override
     public void update(Persona persona) {
         Connection con = null;
-        getConnection(con);
+        con = getConnection(con);
         if(con!=null){
             try {
                 int result;
@@ -105,7 +112,7 @@ public class Model implements PersonaCRUDable{
     @Override
     public Persona search(Persona persona) {
         Connection con = null;
-        getConnection(con);
+        con = getConnection(con);
         if(con!=null){
             try {
                 PreparedStatement ps = con.prepareStatement("select * from personas where clave=? ");
@@ -126,7 +133,7 @@ public class Model implements PersonaCRUDable{
                 }else
                 System.out.println("No se ha encontrado");
                 
-                
+                con.close();
             } catch (Exception e) {
                 System.out.println("Busqueda no exitosa"); 
             }
@@ -139,7 +146,7 @@ public class Model implements PersonaCRUDable{
     @Override
     public void delete(Persona persona) {
         Connection con = null;
-        getConnection(con);
+        con = getConnection(con);
         if(con!=null){
             try {
                 persona = search(persona);   
@@ -153,7 +160,7 @@ public class Model implements PersonaCRUDable{
                         System.out.println("Eliminacion no exitosa");
                     
                 }
-                
+                con.close();
             } catch (Exception e) {
                 System.out.println("Eliminacion no exitosa"); 
             }  

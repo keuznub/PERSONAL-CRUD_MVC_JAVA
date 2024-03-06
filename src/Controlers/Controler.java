@@ -15,6 +15,12 @@ import javax.swing.JTextArea;
 import views.ViewCRUD;
 import models.Model;
 import models.Persona;
+import Controlers.FieldsChecker;
+import static Controlers.FieldsChecker.formatoEmailCorrecto;
+import static Controlers.FieldsChecker.formatoFechaCorrecto;
+import static Controlers.FieldsChecker.formatoNombresCorrecto;
+import static Controlers.FieldsChecker.parseableInt;
+import javax.swing.JTextField;
 /**
  *
  * @author Breixo
@@ -34,6 +40,7 @@ public class Controler{
     private void startView(){
         view.setVisible(true);
         view.setLocationRelativeTo(null);
+        initEvents();
         
         
     }
@@ -42,28 +49,65 @@ public class Controler{
         view.btnInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.insert(persona);
+                insertFromView();
             }
-        });        
+        });   
+        
+        view.btnUpgrade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        }); 
+        
+        view.btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteFromView();
+            }
+        }); 
+        
+        view.btnClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                flushFields();
+            }
+        });
+        
+        view.btnSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchFromView();
+            }
+        }); 
     }
     
     private void insertFromView(){
-        if(camposReady()){
-            persona = new Persona(view.tfNombreShow.getText(), view.tfDomicilioShow.getText(),
-                    view.tfcorreoEShow.getText(), view.jcSelector.getSelectedItem().toString(),view.tfFechaNacimiento.getText(),
-                    Integer.parseInt(view.tfIdShow.getText()), Integer.parseInt(view.tfClaveShow.getText()), Integer.parseInt(view.tfCelularShow.getText()));
+        if(FieldsChecker.camposReady(view)){
+            persona = new Persona(view.tfNombreShow.getText(),
+                    view.tfDomicilioShow.getText(),
+                    view.tfcorreoEShow.getText(),
+                    view.jcSelector.getSelectedItem().toString(),
+                    view.tfFechaNacimiento.getText(),
+                    Integer.parseInt(view.tfClaveShow.getText()),
+                    Integer.parseInt(view.tfCelularShow.getText()));
             
             model.insert(persona);
-        }else{
-            System.out.println("Faltan campos");
-        }
+            flushFields();
             
+        }else{
+            
+        }
+        persona = null;   
     }
     
     private void searchFromView(){
-        if(!view.tfSearchClave.getText().isEmpty()){
+        if(!view.tfSearchClave.getText().isEmpty() && FieldsChecker.parseableInt(view.tfSearchClave.getText())){
             persona = new Persona(Integer.parseInt(view.tfSearchClave.getText()));
             persona = model.search(persona);
+            if(persona!=null){
+            personaToFields(persona);
+            }
         }else{
             System.out.println("Faltan Clave");
         }
@@ -71,36 +115,45 @@ public class Controler{
     }
     
     private void deleteFromView(){
-        if(!view.tfSearchClave.getText().isEmpty()){
+        if(!view.tfSearchClave.getText().isEmpty() && FieldsChecker.parseableInt(view.tfSearchClave.getText())){
             persona = new Persona(Integer.parseInt(view.tfSearchClave.getText()));
             model.delete(persona);
+            
         }else{
-            System.out.println("Faltan campos");
+            System.out.println("Falta clave");
         }
         persona = null;
     }
     
-   
-    
-    private boolean camposReady(){ 
+    private void flushFields(){
+        System.out.println("Limpiar");
         for(JComponent e : view.arrayFields){
-            if(e instanceof JTextArea){
-                if(((JTextArea) e).getText().isEmpty()){
-                    System.out.println(e.getClass().getName() + "Fallo");
-                    return false;
-                }
-                
+            if(e instanceof JTextField){
+                ((JTextField) e).setText("");
             }
             if(e instanceof JComboBox){
-                if(((JComboBox) e).getSelectedItem().equals("Seleccionar")){
-                    System.out.println("JComboBox Falta");
-                    return false;
-                } 
-                       
+
+                ((JComboBox) e).setSelectedIndex(0);
+                
             }
-            
         }
-        return true;    
     }
+    
+    private void personaToFields(Persona persona){
+        view.tfNombreShow.setText(persona.getNombre());
+        view.tfDomicilioShow.setText(persona.getDomicilio());
+        view.tfcorreoEShow.setText(persona.getEmail());
+        view.jcSelector.setSelectedItem(persona.getGenero());
+        view.tfFechaNacimiento.setText(persona.getFecNacimiento());
+        view.tfClaveShow.setText(String.valueOf(persona.getClave()));
+        view.tfCelularShow.setText(String.valueOf(persona.getCelular()));
+        view.tfIdShow.setText(String.valueOf(persona.getId()));
+    }
+
+   
+    
+    
+    
+    
    
 }
