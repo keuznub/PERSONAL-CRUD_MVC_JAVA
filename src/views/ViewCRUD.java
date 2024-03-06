@@ -40,17 +40,7 @@ public class ViewCRUD extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel2 = new javax.swing.JPanel();
-        tfSearchClave = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
-        tfIdShow = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        btnClear = new javax.swing.JButton();
-        btnInsert = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnUpgrade = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblNombreShow = new javax.swing.JLabel();
         tfNombreShow = new javax.swing.JTextField();
@@ -66,230 +56,105 @@ public class ViewCRUD extends javax.swing.JFrame {
         tfFechaNacimiento = new javax.swing.JTextField();
         lblGenero = new javax.swing.JLabel();
         jcSelector = new javax.swing.JComboBox<>();
+        btnUpgrade = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnInsert = new javax.swing.JButton();
+        tfSearchClave = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        tfIdShow = new javax.swing.JTextField();
+        lblId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 550));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        setPreferredSize(new java.awt.Dimension(390, 450));
 
-        jPanel2.setMinimumSize(new java.awt.Dimension(330, 40));
-        jPanel2.setPreferredSize(new java.awt.Dimension(330, 40));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setMinimumSize(new java.awt.Dimension(330, 50));
+        jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(330, 120));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNombreShow.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNombreShow.setText("Nombre :");
+        jPanel1.add(lblNombreShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 70, -1));
+        jPanel1.add(tfNombreShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 175, -1));
+        tfNombreShow.getAccessibleContext().setAccessibleName("nombre");
+
+        lblClave.setText("Clave :");
+        jPanel1.add(lblClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, -1));
+        jPanel1.add(tfClaveShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 175, -1));
+        tfClaveShow.getAccessibleContext().setAccessibleName("clave");
+
+        jPanel1.add(tfDomicilioShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 175, -1));
+        tfDomicilioShow.getAccessibleContext().setAccessibleName("domicilio");
+
+        lblDomicilio.setText("Domicilio :");
+        jPanel1.add(lblDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 70, 22));
+
+        lblCelular.setText("Celular :");
+        jPanel1.add(lblCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 60, -1));
+        jPanel1.add(tfCelularShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 175, -1));
+        tfCelularShow.getAccessibleContext().setAccessibleName("celular");
+
+        lblCorreoE.setText("Correo electrónico :");
+        jPanel1.add(lblCorreoE, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 160, -1));
+        jPanel1.add(tfcorreoEShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 175, -1));
+        tfcorreoEShow.getAccessibleContext().setAccessibleName("email");
+
+        lblFechaNacimiento.setText("Fecha Nacimiento :");
+        jPanel1.add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 160, -1));
+        jPanel1.add(tfFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 175, -1));
+        tfFechaNacimiento.getAccessibleContext().setAccessibleName("fechaNacimiento");
+
+        lblGenero.setText("Genero :");
+        jPanel1.add(lblGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 70, -1));
+
+        jcSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Hombre", "Mujer", "No-Binario", "Otro" }));
+        jPanel1.add(jcSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 175, -1));
+        jcSelector.getAccessibleContext().setAccessibleName("genero");
+
+        btnUpgrade.setText("Modificar");
+        jPanel1.add(btnUpgrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 330, -1, 30));
+
+        btnDelete.setText("Eliminar");
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 330, -1, 30));
+
+        btnClear.setText("Limpiar");
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 330, -1, 30));
+
+        btnInsert.setText("Añadir");
+        jPanel1.add(btnInsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 330, -1, 30));
 
         tfSearchClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfSearchClaveActionPerformed(evt);
             }
         });
-        jPanel2.add(tfSearchClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 90, -1));
+        jPanel1.add(tfSearchClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, -1));
         tfSearchClave.getAccessibleContext().setAccessibleName("claveBuscar");
 
         btnSearch.setText("Buscar");
-        jPanel2.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 100, -1));
-        jPanel2.add(tfIdShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 60, 100, -1));
+        jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 100, -1));
+
+        tfIdShow.setFocusable(false);
+        jPanel1.add(tfIdShow, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 40, -1));
         tfIdShow.getAccessibleContext().setAccessibleName("id");
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        getContentPane().add(jPanel2, gridBagConstraints);
+        lblId.setText("Id :");
+        jPanel1.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
-        jPanel3.setMinimumSize(new java.awt.Dimension(330, 1));
-        jPanel3.setPreferredSize(new java.awt.Dimension(330, 20));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        btnClear.setText("Limpiar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel3.add(btnClear, gridBagConstraints);
-
-        btnInsert.setText("Añadir");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel3.add(btnInsert, gridBagConstraints);
-
-        btnDelete.setText("Eliminar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel3.add(btnDelete, gridBagConstraints);
-
-        btnUpgrade.setText("Modificar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel3.add(btnUpgrade, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        getContentPane().add(jPanel3, gridBagConstraints);
-
-        jPanel1.setMinimumSize(new java.awt.Dimension(330, 50));
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(330, 120));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
-
-        lblNombreShow.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNombreShow.setText("Nombre :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblNombreShow, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(tfNombreShow, gridBagConstraints);
-        tfNombreShow.getAccessibleContext().setAccessibleName("nombre");
-
-        lblClave.setText("Clave :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblClave, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(tfClaveShow, gridBagConstraints);
-        tfClaveShow.getAccessibleContext().setAccessibleName("clave");
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(tfDomicilioShow, gridBagConstraints);
-        tfDomicilioShow.getAccessibleContext().setAccessibleName("domicilio");
-
-        lblDomicilio.setText("Domicilio :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblDomicilio, gridBagConstraints);
-
-        lblCelular.setText("Celular :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblCelular, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(tfCelularShow, gridBagConstraints);
-        tfCelularShow.getAccessibleContext().setAccessibleName("celular");
-
-        lblCorreoE.setText("Correo electrónico :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblCorreoE, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(tfcorreoEShow, gridBagConstraints);
-        tfcorreoEShow.getAccessibleContext().setAccessibleName("email");
-
-        lblFechaNacimiento.setText("Fecha Nacimiento :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblFechaNacimiento, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(tfFechaNacimiento, gridBagConstraints);
-        tfFechaNacimiento.getAccessibleContext().setAccessibleName("fechaNacimiento");
-
-        lblGenero.setText("Genero :");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 10);
-        jPanel1.add(lblGenero, gridBagConstraints);
-
-        jcSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Hombre", "Mujer", "No-Binario", "Otro" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jcSelector, gridBagConstraints);
-        jcSelector.getAccessibleContext().setAccessibleName("genero");
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        getContentPane().add(jPanel1, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -307,8 +172,6 @@ public class ViewCRUD extends javax.swing.JFrame {
     public javax.swing.JButton btnSearch;
     public javax.swing.JButton btnUpgrade;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     public javax.swing.JComboBox<String> jcSelector;
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblClave;
@@ -316,6 +179,7 @@ public class ViewCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel lblDomicilio;
     private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblGenero;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombreShow;
     public javax.swing.JTextField tfCelularShow;
     public javax.swing.JTextField tfClaveShow;
