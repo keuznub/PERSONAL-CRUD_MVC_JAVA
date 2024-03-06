@@ -77,7 +77,7 @@ public class Model implements PersonaCRUDable{
     }
 
     @Override
-    public void update(Persona persona) {
+    public void update(Persona persona, int oldClave) {
         Connection con = null;
         con = getConnection(con);
         if(con!=null){
@@ -91,7 +91,7 @@ public class Model implements PersonaCRUDable{
                 ps.setString(5, persona.getEmail());
                 ps.setDate(6,  Date.valueOf(persona.getFecNacimiento()));
                 ps.setString(7, persona.getGenero());
-                ps.setInt(8, persona.getClave());
+                ps.setInt(8, oldClave);
                 result = ps.executeUpdate();
                 
                 

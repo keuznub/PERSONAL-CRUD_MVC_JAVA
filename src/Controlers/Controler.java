@@ -21,6 +21,7 @@ import static Controlers.FieldsChecker.formatoFechaCorrecto;
 import static Controlers.FieldsChecker.formatoNombresCorrecto;
 import static Controlers.FieldsChecker.parseableInt;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 /**
  *
  * @author Breixo
@@ -29,6 +30,8 @@ public class Controler{
     private ViewCRUD view;
     private Model model;
     private Persona persona;
+    private int claveModificable = -1;
+   
     
     public Controler(Model model, ViewCRUD view){
         this.view = view;
@@ -38,6 +41,7 @@ public class Controler{
     
     
     private void startView(){
+        
         view.setVisible(true);
         view.setLocationRelativeTo(null);
         initEvents();
@@ -56,7 +60,7 @@ public class Controler{
         view.btnUpgrade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                updateFromView();
             }
         }); 
         
@@ -108,11 +112,31 @@ public class Controler{
             if(persona!=null){
             personaToFields(persona);
             }
+            
         }else{
             System.out.println("Faltan Clave");
         }
         persona = null;
     }
+    
+    private void updateFromView(){
+        if(claveModificable!=-1){
+            persona = new Persona(view.tfNombreShow.getText(),
+                    view.tfDomicilioShow.getText(),
+                    view.tfcorreoEShow.getText(),
+                    view.jcSelector.getSelectedItem().toString(),
+                    view.tfFechaNacimiento.getText(),
+                    Integer.parseInt(view.tfClaveShow.getText()),
+                    Integer.parseInt(view.tfCelularShow.getText()));
+            model.update(persona,claveModificable);
+            flushFields();
+            
+        }else
+           System.out.println("Necesitas buscar primero"); 
+
+        persona = null;
+    }
+    
     
     private void deleteFromView(){
         if(!view.tfSearchClave.getText().isEmpty() && FieldsChecker.parseableInt(view.tfSearchClave.getText())){
@@ -138,6 +162,7 @@ public class Controler{
                 
             }
         }
+        claveModificable = -1;
     }
     
     private void personaToFields(Persona persona){
@@ -149,6 +174,7 @@ public class Controler{
         view.tfClaveShow.setText(String.valueOf(persona.getClave()));
         view.tfCelularShow.setText(String.valueOf(persona.getCelular()));
         view.tfIdShow.setText(String.valueOf(persona.getId()));
+        claveModificable = persona.getClave();
     }
 
    

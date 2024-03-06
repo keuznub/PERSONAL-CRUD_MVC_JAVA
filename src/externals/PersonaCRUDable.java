@@ -14,7 +14,7 @@ public interface PersonaCRUDable {
     
     public void insert(Persona persona);
     
-    public void update(Persona persona);
+    public void update(Persona persona, int oldClave);
     
     public Persona search(Persona persona);
     

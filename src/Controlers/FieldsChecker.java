@@ -36,7 +36,7 @@ public class FieldsChecker {
                 } 
                        
             }
-            if(!(parseableInt(view.tfClaveShow.getText()) && parseableInt(view.tfCelularShow.getText()) && formatoEmailCorrecto(view.tfcorreoEShow.getText()) 
+            if(!(parseableInt(view.tfClaveShow.getText()) && formatoCelularCorrecto(view.tfCelularShow.getText()) && formatoEmailCorrecto(view.tfcorreoEShow.getText()) 
                     && formatoNombresCorrecto(view.tfDomicilioShow.getText()) && formatoNombresCorrecto(view.tfNombreShow.getText())
                     && formatoNombresCorrecto(view.jcSelector.getSelectedItem().toString()) && formatoFechaCorrecto(view.tfFechaNacimiento.getText()))){
                 return false;
@@ -64,6 +64,18 @@ public class FieldsChecker {
             return true;
         else{
             System.out.println("Fallo formato Fecha");
+            return false;
+        }
+    }
+    
+    public static boolean formatoCelularCorrecto(String text){
+        String regex = "\\d{9}";
+        Pattern pattern = Pattern.compile(regex);
+       //Matcher matcher = pattern.matcher(text);
+        if(text.matches(regex))
+            return true;
+        else{
+            System.out.println("Fallo formato Teléfono");
             return false;
         }
     }

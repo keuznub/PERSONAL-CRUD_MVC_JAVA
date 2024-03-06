@@ -14,9 +14,17 @@ import Controlers.Controler;
  * @author Breixo
  */
 public class MainCRUD {
-
+    private static final String lookAndFeelTexture = "com.jtattoo.plaf.texture.TextureLookAndFeel";
+    private static final String lookAndFeelAcryl = "com.jtattoo.plaf.acryl.AcrylLookAndFeel";
   
      public static void main(String args[]) {
+         
+       try{
+        UIManager.setLookAndFeel(lookAndFeelTexture);
+        }catch(Exception e){
+            System.out.println("Bad Look and feel reference");
+        }
+         
        Model model = new Model();
        ViewCRUD view = new ViewCRUD();
        Controler controler = new Controler(model, view);
