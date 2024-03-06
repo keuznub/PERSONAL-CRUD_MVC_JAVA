@@ -118,6 +118,7 @@ public class Controler{
         if(!view.tfSearchClave.getText().isEmpty() && FieldsChecker.parseableInt(view.tfSearchClave.getText())){
             persona = new Persona(Integer.parseInt(view.tfSearchClave.getText()));
             model.delete(persona);
+            flushFields();
             
         }else{
             System.out.println("Falta clave");

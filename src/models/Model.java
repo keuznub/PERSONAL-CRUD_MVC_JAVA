@@ -151,7 +151,7 @@ public class Model implements PersonaCRUDable{
             try {
                 persona = search(persona);   
                 if(persona!=null){
-                    PreparedStatement ps = con.prepareStatement(" delete from persona where id=?");
+                    PreparedStatement ps = con.prepareStatement(" delete from personas where id=?");
                     ps.setInt(1, persona.getId());
                     int result = ps.executeUpdate();
                     if(result>0)
