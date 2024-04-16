@@ -54,3 +54,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-03-06 17:56:00
+
+No sé por que copie y pegué eso de ahi arriba en su momento, pero por si las moscas lo dejaré
